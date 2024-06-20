@@ -1,0 +1,48 @@
+import os 
+
+def salvar_dados (op, data_hora, nome, tamanho, funcionario, setor, observacao): 
+    with open (' Controle_de_pedidos.txt ', 'a') as arquivo:
+        arquivo.write(f'OP: {op}\n')
+        arquivo.write(f'Data e hora do chamado: {data_hora}\n')
+        arquivo.write(f'Seu nome: {nome}\n')
+        arquivo.write(f'Tamanho da pizza: {tamanho}\n')
+        arquivo.write(f'Nome do funcionário: {setor}\n')
+        arquivo.write(f'Setor atendido: {setor}\n')
+        arquivo.write(f'Observação da chamada: {observacao}\n')
+        arquivo.write('-'*50 + '\n')
+
+def menu():
+    print("Controle de Pedidos da pizzaria")
+    op = input("Informe a ordem de produção: ")
+    data_hora = input("Informe a Data e hora do chamado: ")
+    nome = input("Informe seu nome por favor:")
+    tamanho = input("Informe o tamanho da pizza, grande ou mini:")
+    funcionario = input("Informe o nome do funcionário: ")
+    setor = input("Informe o setor atendido: ")
+    observacao = input("Informe a Observação do chamado: ")
+
+    salvar_dados(op, data_hora, nome, tamanho, funcionario, setor, observacao)
+    print("Dados salvos com sucesso!")
+
+if __name__ == "__main__":
+    while True:
+        menu()
+        continuar = input("Deseja cadastrar outro chamado? (s/n): ")
+        if continuar.lower() != 's':
+            break
+        import pandas as pd 
+        def imprimir_tabela_csv(caminho_arquivo):
+            try:
+                # Lendo o arquivo CSV
+                dados = pd.read_csv(caminho_arquivo)
+
+                #  Imprimindo as informações em forma de tabela 
+                print(dados)
+            except FileNotFoundError: 
+                print("Arquivo não encontrado")
+            except Exception as e:
+                print("Ocorreu um erro:", e)
+            if __name__== "__main__":
+                caminho_arquivo = input("Digite o caminho completo do arquivo CVS: ")
+                imprimir_tabela_csv(caminho_arquivo)
+                
